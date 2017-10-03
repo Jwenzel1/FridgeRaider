@@ -1,0 +1,33 @@
+.panel-body {
+
+	overflow-y: scroll;
+	overflow-x: hidden;
+	max-height: 550px;
+}
+.panel-default {
+    min-height: 550px;
+}
+
+.navbar-inverse {
+    background-color: #00afb7;
+    border-color: #00afb7;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #fdfcfc;
+}
+.navbar-inverse .navbar-brand {
+    color: #f3f3f3;
+}
+.button {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -104.5px; /*104.5px is half of the button's width*/
+}
+
+body {
+    background-image: url("cream_pixels.png");
+    
+
+}

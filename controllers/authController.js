@@ -15,7 +15,7 @@ module.exports = {
         console.log("If cuking worked");
 
       //THIS WILL CHANGE TO PROFILE INFO AFTER REACT COMPONENETS ARE DONE
-        res.redirect('/');
+        res.json(req.user);
       });
     });
   },
@@ -29,7 +29,17 @@ module.exports = {
 
 
   authLogin: function(req, res){
-      res.json({User: req.user.username});
+    req.body.username = req.params.username;
+    req.body.password = req.params.password;
+    console.log("fuck");
+    passport.authenticate('local', function(err, user, info) {
+    if (err) { return res.json(err); }
+    if (!user) { return res.json({message: "something happened"}); }
+    req.logIn(user, function(err) {
+      if (err) { return res.json(err); }
+      return res.json({message: "logged in"});
+    });
+  })(req, res);
     // passport.authenticate('local', function (err, user) {
     //   console.log("In Auth");
     //   if (err) {
@@ -53,7 +63,7 @@ module.exports = {
 
   authLogout: function(req, res){
       req.logout();
-      res.redirect('/');
+      res.json({message: "logout"});
   }
 
 }

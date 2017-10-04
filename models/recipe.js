@@ -15,6 +15,12 @@ const recipeSchema = new Schema({
     qty: Number,
     unit: String
   }],
+  nutrition: [{
+    title: String,
+    amount: Number,
+    unit: String,
+    percentOfDailyNeeds: Number
+  }],
   image: String
 });
 

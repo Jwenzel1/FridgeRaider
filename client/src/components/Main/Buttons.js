@@ -1,7 +1,7 @@
-import React from "react";
+import React, {Component} from "react";
 import {Button, ButtonToolbar} from "react-bootstrap";
 
-const Buttons = React.createClass({
+class Buttons extends Component {
 
 render(){
   return(
@@ -16,6 +16,6 @@ render(){
 );
 }
 
-})
+}
 
 export default Buttons;

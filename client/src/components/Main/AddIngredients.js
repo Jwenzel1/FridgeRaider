@@ -1,46 +1,62 @@
-import React from "react";
-import { FormGroup, FormControl, HelpBlock } from "react-bootstrap"
+import React, {Component} from "react";
+import DeleteBtn from "./DeleteBtn";
+import {Button, ButtonToolbar, Panel, FormExample, ListGroup, ListGroupItem, FormGroup, FormControl, HelpBlock } from "react-bootstrap";
 
+class AddIngredients extends Component {
+  state = {
+    ingredients: [],
+    ingredient: ""
+  };
 
+  handleInputChange = event => {
+    this.setState({ ingredient: event.target.value });
+  };
 
-const AddIngredients = React.createClass({
-  getInitialState() {
-    return {
-      value: ''
-    };
-  },
+  handleSubmitForm = event => {
+    event.preventDefault();
+    let ingredients = this.state.ingredients;
+    ingredients.push(this.state.ingredient);
+    this.setState({ingredients: ingredients, ingredient: ""});
+  };
 
-  getValidationState() {
-    const length = this.state.value.length;
-    if (length > 10) return 'success';
-    else if (length > 5) return 'warning';
-    else if (length > 0) return 'error';
-  },
-
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  },
-
-  render() {
-    return (
-      <form>
-        <FormGroup
-          controlId="formBasicText"
-          validationState={this.getValidationState()}
-        >
-          
-          <FormControl
-            type="text"
-            value={this.state.value}
-            placeholder="Enter text"
-            onChange={this.handleChange}
-          />
-          <FormControl.Feedback />
-          <HelpBlock>This is the main page!</HelpBlock>
-        </FormGroup>
-      </form>
-    );
+  deleteIngredient = event => {
+    this.setState({ingredient: ""});
   }
-});
+
+  render(){
+    return(
+      <Panel collapsible defaultExpanded header="Add Ingredients">
+        <form >
+          <FormGroup
+            controlId="formBasicText"
+          >
+            <FormControl
+              type="text"
+              value={this.state.ingredient}
+              placeholder="Enter text"
+              onChange={this.handleInputChange}
+            />
+            <FormControl.Feedback />
+          </FormGroup>
+
+      <ListGroup>
+         {this.state.ingredients.map(ingredient => (
+           <ListGroupItem>
+             <strong>
+              {ingredient}
+              <DeleteBtn onClick={this.deleteIngredient} />
+             </strong>
+            </ListGroupItem>
+          ))}
+      </ListGroup>
+      <ButtonToolbar>
+        <Button type="submit" bsStyle="success" onClick={this.handleSubmitForm}>Save Ingredients</Button>
+        <Button type="submit" bsStyle="info">Find Recipes</Button>
+      </ButtonToolbar>
+      </form>
+    </Panel>
+    )
+  }
+}
 
 export default AddIngredients;

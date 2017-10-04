@@ -1,15 +1,78 @@
-import React from "react";
-import {Panel} from "react-bootstrap";
-import RecipePictures from "./RecipePictures";
+import React, {Component} from "react";
+import {Grid, Row, Col, Thumbnail, Button, Panel} from "react-bootstrap";
+import DisplayRecipeInfo from "../Profile/RecipeInfo";
 
- const DisplayRecipes = React.createClass({
-  render(){
-    return(
+class DisplayRecipes extends Component {
+
+render(){
+ return(
   <Panel collapsible defaultExpanded header="Generated Recipes">
-  	<RecipePictures/>
-  </Panel>
-)
-}
-});
+        <Grid>
+    <Row className= "rightSide">
+    <Col xs={4} md={2}>
+      <Thumbnail src="./strawberry.jpg" alt="100x100">
+        <h3>Thumbnail label</h3>
+        <p>Description</p>
+        <p>
+          <DisplayRecipeInfo />
+        </p>
+      </Thumbnail>
+    </Col>
+    <Col xs={4} md={2}>
+      <Thumbnail src="./strawberry.jpg" alt="100x100">
+        <h3>Thumbnail label</h3>
+        <p>Description</p>
+        <p>
+          <DisplayRecipeInfo />
+        </p>
+      </Thumbnail>
+    </Col>
+    <Col xs={4} md={2}>
+      <Thumbnail src="./strawberry.jpg" alt="100x100">
+        <h3>Thumbnail label</h3>
+        <p>Description</p>
+        <p>
+          <DisplayRecipeInfo />
 
- export default DisplayRecipes;
+        </p>
+      </Thumbnail>
+    </Col>
+    </Row>
+    <Row>
+    <Col xs={4} md={2}>
+      <Thumbnail src="./strawberry.jpg" alt="100x100">
+        <h3>Thumbnail label</h3>
+        <p>Description</p>
+        <p>
+          <DisplayRecipeInfo />
+        </p>
+      </Thumbnail>
+    </Col>
+    <Col xs={4} md={2}>
+      <Thumbnail src="./strawberry.jpg" alt="100x100">
+        <h3>Thumbnail label</h3>
+        <p>Description</p>
+        <p>
+          <DisplayRecipeInfo />
+        </p>
+      </Thumbnail>
+    </Col>
+    <Col xs={4} md={2}>
+      <Thumbnail src="./strawberry.jpg" alt="100x100">
+        <h3>Thumbnail label</h3>
+        <p>Description</p>
+        <p>
+          <DisplayRecipeInfo />
+
+        </p>
+      </Thumbnail>
+    </Col>
+    </Row>
+   </Grid>
+  </Panel>
+
+      )
+  }
+}
+
+export default DisplayRecipes;

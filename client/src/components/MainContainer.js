@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MainPanel from "./Main/MainPanel";
+import AddIngredients from "./Main/AddIngredients";
 import StaticNavbar from "./Main/StaticNavbar";
 import DisplayRecipes from "./Main/DisplayRecipes";
 import Login from "./Profile/Login";
@@ -14,13 +14,13 @@ class MainContainer extends Component {
         <StaticNavbar />
         </div>
         <div className="col-lg-6">
-          <MainPanel />
+          <AddIngredients />
         </div>
         <div className="col-lg-6">
-          
+
           <DisplayRecipes />
           </div>
-       
+
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, NavItem, NavDropdown, Nav, MenuItem, Panel } from 'react-bootstrap';
 import Login from "../Profile/Login";
+import Signup from "../Profile/Signup"
 
 const StaticNavbar = React.createClass({
 render(){
@@ -17,10 +18,10 @@ render(){
        <Nav>
         <NavDropdown eventKey={3} title="Login" id="basic-nav-dropdown">
           <MenuItem href="/" eventKey={3.1}>Home</MenuItem>
-          <MenuItem href="/profile"eventKey={3.2}>My Profile</MenuItem>
+          <MenuItem eventKey={3.2}><Login /></MenuItem>
 
           <MenuItem divider />
-          <MenuItem eventKey={3.3}><Login /></MenuItem>
+          <MenuItem eventKey={3.3}><Signup /></MenuItem>
         </NavDropdown>
        </Nav>
       </Nav>
@@ -32,8 +33,3 @@ render(){
 });
 
 export default StaticNavbar;
-
-
-
-
-  

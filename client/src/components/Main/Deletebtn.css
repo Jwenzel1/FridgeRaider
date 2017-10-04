@@ -1,0 +1,8 @@
+.delete-btn {
+  float: right;
+  color: red;
+}
+.ingredient-delete {
+	background-color:white;
+	border: 0px;
+}

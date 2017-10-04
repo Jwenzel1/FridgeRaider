@@ -4,13 +4,8 @@ import {Button, ButtonToolbar, Panel, FormExample, ListGroup, ListGroupItem, For
 
 class AddIngredients extends Component {
   state = {
-    number: [],
     ingredients: [],
     ingredient: ""
-  };
-
-  number = event => {
-    this.setState({ number: this.state.count +1 })
   };
 
   handleInputChange = event => {
@@ -26,11 +21,10 @@ class AddIngredients extends Component {
 
 
     deleteIngredient = event => {
-      var array = this.state.ingredient;
-      var index = array.indexOf(event.target.value)
-      array.splice(index,1);
-      this.setState({ingredient: array});
-  };
+    this.setState({ingredient: ""});
+  }
+
+
 
   render(){
     return(
@@ -51,10 +45,8 @@ class AddIngredients extends Component {
       <ListGroup>
          {this.state.ingredients.map(ingredient => (
            <ListGroupItem>
-           {number}
              <strong>
               {ingredient}
-
               <DeleteBtn onClick={this.deleteIngredient} />
              </strong>
             </ListGroupItem>

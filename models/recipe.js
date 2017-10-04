@@ -18,6 +18,6 @@ const recipeSchema = new Schema({
   image: String
 });
 
-const Book = mongoose.model("Recipe", recipeSchema);
+const recipe = mongoose.model("Recipe", recipeSchema);
 
-module.exports = Book;
+module.exports = recipe;

@@ -2,16 +2,12 @@ import React, {Component} from "react";
 import DeleteBtn from "./DeleteBtn";
 import {Button, ButtonToolbar, Panel, FormExample, ListGroup, ListGroupItem, FormGroup, FormControl, HelpBlock } from "react-bootstrap";
 
-class AddIngredients extends Component {
-  state = {
-    number: [],
-    ingredients: [],
-    ingredient: ""
-  };
-
-  number = event => {
-    this.setState({ number: this.state.count +1 })
-  };
+class AddIngredients extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { ingredients: [], ingredient: "" };
+    this.removeIngredient = this.removeIngredient.bind(this);
+  }
 
   handleInputChange = event => {
     this.setState({ ingredient: event.target.value });
@@ -26,11 +22,10 @@ class AddIngredients extends Component {
 
 
     deleteIngredient = event => {
-      var array = this.state.ingredient;
-      var index = array.indexOf(event.target.value)
-      array.splice(index,1);
-      this.setState({ingredient: array});
-  };
+    this.setState({ingredient: ""});
+  }
+
+
 
   render(){
     return(
@@ -51,10 +46,8 @@ class AddIngredients extends Component {
       <ListGroup>
          {this.state.ingredients.map(ingredient => (
            <ListGroupItem>
-           {number}
              <strong>
               {ingredient}
-
               <DeleteBtn onClick={this.deleteIngredient} />
              </strong>
             </ListGroupItem>

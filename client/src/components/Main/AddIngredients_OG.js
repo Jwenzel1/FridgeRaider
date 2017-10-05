@@ -5,8 +5,8 @@ import {Button, ButtonToolbar, Panel, FormExample, ListGroup, ListGroupItem, For
 class AddIngredients extends Component {
   state = {
     ingredients: [],
-    ingredient: ""
-  };
+    ingredient: ""  
+       };
 
   handleInputChange = event => {
     this.setState({ ingredient: event.target.value });
@@ -23,7 +23,6 @@ class AddIngredients extends Component {
     deleteIngredient = event => {
     this.setState({ingredient: ""});
   }
-
 
 
   render(){

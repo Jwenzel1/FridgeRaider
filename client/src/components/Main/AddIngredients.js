@@ -38,7 +38,7 @@ class AddIngredients extends Component {
             />
             <FormControl.Feedback />
           </FormGroup>
-
+        
       <ListGroup>
          {this.state.ingredients.map(ingredient => (
            <ListGroupItem>

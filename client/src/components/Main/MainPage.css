@@ -2,10 +2,10 @@
 
 	overflow-y: scroll;
 	overflow-x: hidden;
-	max-height: 550px;
+	max-height: 700px;
 }
 .panel-default {
-    min-height: 550px;
+    min-height: 750px;
 }
 
 .navbar-inverse {

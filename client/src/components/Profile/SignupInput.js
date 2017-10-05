@@ -1,14 +1,8 @@
 import React from "react";
-import API from "../utils/API"
 import { Button, Form, FormGroup, Col, ControlLabel, FormControl } from 'react-bootstrap';
 
 export const SignupInput = React.createClass({
-
-  press(){
-    API.checkLoginStatus();
-  },
-
- render(){
+ render(){ 
   return(
   <Form horizontal>
     <FormGroup controlId="formHorizontalEmail">
@@ -40,7 +34,7 @@ export const SignupInput = React.createClass({
 
     <FormGroup>
       <Col smOffset={2} sm={10}>
-        <Button href="/profile" type="submit" onClick={this.press}>
+        <Button href="/profile" type="submit">
           Submit
         </Button>
       </Col>

@@ -19,7 +19,6 @@ render(){
         <NavDropdown eventKey={3} title="Login" id="basic-nav-dropdown">
           <MenuItem href="/" eventKey={3.1}>Home</MenuItem>
           <MenuItem eventKey={3.2}><Login /></MenuItem>
-
           <MenuItem divider />
           <MenuItem eventKey={3.3}><Signup /></MenuItem>
         </NavDropdown>
@@ -33,3 +32,8 @@ render(){
 });
 
 export default StaticNavbar;
+
+
+
+
+  

@@ -1,53 +1,65 @@
 import React, {Component} from "react";
 import ReactDOM from "react";
-import { Button, Modal, ButtonToolbar } from 'react-bootstrap';
-import SaveBtn from "../Main/Savebtn";
+import { Button, Modal, ButtonToolbar, Thumbnail } from 'react-bootstrap';
+import StarButton from "../Main/StarButton";
 
-
-  export class RecipeInfo extends Component{
-    render() {
-      return (
-        <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-lg">Recipe Information</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            Spicy jalapeno bacon ipsum dolor amet pork jerky bresaola,
-            salami picanha pork belly corned beef chuck burgdoggen meatball
-            chicken spare ribs short ribs turducken. Kielbasa corned beef filet mignon
-            bresaola beef prosciutto tri-tip ribeye pastrami meatball ham.
-            Ground round fatback ham spare ribs. Shank ribeye pancetta biltong, prosciutto cupim cow sausage pork belly.
-            Salami frankfurter flank, kielbasa doner turducken t-bone shank rump pork loin sausage pork chop.
-            Porchetta meatloaf sausage filet mignon meatball pancetta rump tongue, cow tail sirloin boudin.
-            Cupim short ribs cow ground round meatball ham hock pork chop.
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.props.onHide}>Close</Button>
-          </Modal.Footer>
-        </Modal>
-      );
-    }
-  };
 
  export class DisplayRecipe extends Component {
     state = {
-     lgShow: false
+     lgShow: false,
     }
+
     render() {
       let lgClose = () => this.setState({ lgShow: false });
 
       return (
         <div>
-             <SaveBtn/>
+             <StarButton/>
           <div bsStyle="primary" onClick={()=>this.setState({ lgShow: true })}>
             <Button bsStyle="success">See Recipe</Button>
 
           </div>
-          <RecipeInfo show={this.state.lgShow} onHide={lgClose} />
-        </div>
+          <RecipeInfo 
+          show={this.state.lgShow} 
+          onHide={lgClose} 
+          title={this.props.title}
+          instructions={this.props.instructions}
+          ingredients={this.props.ingredients}
+          image={this.props.image}
+          />
+        </div>  
+  )
+ } 
+} 
 
-      );
+  class RecipeInfo extends Component {
+
+ componentDidMount(){
+    console.log(this.props.ingredients)
+    console.log(this.props.instructions)
     }
-  };
+
+render(){
+  return(
+        <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
+          <Modal.Header closeButton>
+            <Thumbnail src={this.props.image} alt="50x50" style={{width:150, height:100}} className="row">
+            </Thumbnail>
+            <Modal.Title className="row" id="contained-modal-title-lg"><strong>{this.props.title}</strong></Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+              <strong>Ingredients:</strong>
+              {this.props.ingredients.map((ingredient) => (<li> {ingredient.qty} {ingredient.unit} {ingredient.name} </li>))}
+              <p></p>   
+              <strong>Instructions:</strong>      
+             {this.props.instructions.map((instruction) => ( <div> {instruction.number}) {instruction.step}</div>))}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.props.onHide} style={{float:"bottom"}}>Close</Button>
+          </Modal.Footer>
+        </Modal>
+      );
+  }
+}    
 
  export default DisplayRecipe;

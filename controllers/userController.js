@@ -44,5 +44,9 @@ module.exports = {
         res.json(result);
       });
     });
+  },
+
+  addIngredients: function(req, res){
+    let ingredients = req.body.ingredients;
   }
 }

@@ -39,6 +39,10 @@ module.exports = {
   },
 
   removeFavRecipe: function(req, res){
-
+    db.Recipe.findOne({"spoonacularID": req.body.id}, function(err, results){
+      db.User.update({"username": req.user.username}, {"$pull": {"favoriteRecipes": results._id}}, function(err, result){
+        res.json(result);
+      });
+    });
   }
 }

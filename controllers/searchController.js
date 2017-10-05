@@ -1,10 +1,9 @@
 const unirest = require("unirest");
 const key = "K42zVU0lUrmshTfDzUCl8bcrngrop1o8UWzjsnktewrpLF8fUH"; //needs to be changed to a production key before deployment
 const db = require("../models");
-const numRecipes = "5";
+const numRecipes = "6";
 
 function makeSingleRecipe(response){ //Does not check to see if recipe already exists
-  console.log(response);
   let ingredients = [];
   let instructions = [];
   let nutrition = [];
@@ -40,23 +39,6 @@ function makeSingleRecipe(response){ //Does not check to see if recipe already e
     nutrition: nutrition
   }
   return tastyRecipe;
-  // db.Recipe.create({
-  //   title: response.recipes[0].title,
-  //   spoonacularID: response.recipes[0].id,
-  //   instructions: instructions,
-  //   sourceURL: response.recipes[0].sourceURL,
-  //   spoonacularURL: response.recipes[0].spoonacularSourceUrl,
-  //   ingredients: ingredients,
-  //   image: response.recipes[0].image
-  // }, function(err, recipe){
-  //   if(err){
-  //     console.log("HOLY MOLY AN ERROR!!!");
-  //     return err;
-  //   }
-  //   else{
-  //     return recipe;
-  //   }
-  // });
 }
 
 module.exports = {
@@ -94,7 +76,7 @@ module.exports = {
         .header("X-Mashape-Key", key)
         .header("Accept", "application/json")
         .end(function (result) {
-          if(!result.statusCode){
+          if(result.statusCode === 200){
             db.Recipe.create(makeSingleRecipe(result.body), function(err, result){
               res.json(result);
             });
@@ -102,5 +84,7 @@ module.exports = {
         });
       }
     });
-  }
+  },
+
+  makeRecipe: makeSingleRecipe
 }

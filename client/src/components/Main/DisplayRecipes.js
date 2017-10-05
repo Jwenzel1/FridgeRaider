@@ -9,13 +9,15 @@ class DisplayRecipes extends Component {
   state = {
     recipes:[],
     id: "",
-  }
+  };
 
-componentDidMount() {
-    let recipes = localStorage.getItem("recipes")
-    console.log(typeof(recipes));
+ getRecipes() {
+    console.log("Running getRecipes()");
+    let recipes = localStorage.getItem("recipes");;
     recipes = JSON.parse(recipes);
+    console.log("This is inside setRecipes: " + recipes);
     this.setState({recipes:recipes});
+    console.log(this.state.recipes);
     
 }
 

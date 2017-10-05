@@ -26,7 +26,7 @@ import {Button, ButtonToolbar, Panel, FormExample, ListGroup, ListGroupItem, For
 
   render(){
     return(
-      <Panel collapsible defaultExpanded header="Save Your Ingredients">
+      <Panel collapsible defaultExpanded header="Save Your Ingredients to your Fridge">
         <form >
           <FormGroup
             controlId="formBasicText"

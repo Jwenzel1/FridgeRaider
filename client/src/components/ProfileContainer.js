@@ -16,10 +16,10 @@ class ProfileContainer extends Component {
           <AddIngredientsProfile />
         </div>
         <div className="col-lg-6">
-
+          
           <DisplayFavoriteRecipes />
           </div>
-
+       
       </div>
     );
   }

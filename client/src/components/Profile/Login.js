@@ -34,10 +34,10 @@ import LoginInput from "./LoginInput"
           <div bsStyle="primary" onClick={()=>this.setState({ lgShow: true })}>
             My Profile
           </div>
-
+          
           <LoginModal show={this.state.lgShow} onHide={lgClose} />
-        </div>
-
+        </div>  
+        
       );
     }
   };

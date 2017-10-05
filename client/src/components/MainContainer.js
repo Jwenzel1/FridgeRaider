@@ -3,7 +3,12 @@ import AddIngredients from "./Main/AddIngredients";
 import StaticNavbar from "./Main/StaticNavbar";
 import DisplayRecipes from "./Main/DisplayRecipes";
 import Login from "./Profile/Login";
-import "./Main/MainPage.css"
+import "./Main/MainPage.css";
+
+
+
+
+
 
 class MainContainer extends Component {
 
@@ -17,10 +22,9 @@ class MainContainer extends Component {
           <AddIngredients />
         </div>
         <div className="col-lg-6">
-
-          <DisplayRecipes />
+          <DisplayRecipes/>
           </div>
-
+       
       </div>
     );
   }

@@ -42,7 +42,7 @@ module.exports = {
       if (!user) { return res.json({message: "Invalid username or password"}); }
       req.logIn(user, function(err) {
         if (err) { return res.json(err); }
-        User.findOne({"username" : user.username}, function(err, results){
+        User.findOne({"username": req.user.username}).populate("favoriteRecipes").exec(function(err, results){
           if(err){
             return res.json({message: "Error retrieving user during log in"});
           }

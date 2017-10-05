@@ -2,12 +2,11 @@ import React, {Component} from "react";
 import DeleteBtn from "./DeleteBtn";
 import {Button, ButtonToolbar, Panel, FormExample, ListGroup, ListGroupItem, FormGroup, FormControl, HelpBlock } from "react-bootstrap";
 
-class AddIngredients extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { ingredients: [], ingredient: "" };
-    this.removeIngredient = this.removeIngredient.bind(this);
-  }
+class AddIngredients extends Component {
+  state = {
+    ingredients: [],
+    ingredient: ""  
+       };
 
   handleInputChange = event => {
     this.setState({ ingredient: event.target.value });
@@ -24,7 +23,6 @@ class AddIngredients extends React.Component {
     deleteIngredient = event => {
     this.setState({ingredient: ""});
   }
-
 
 
   render(){

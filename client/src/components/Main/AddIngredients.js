@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import DeleteBtn from "./DeleteBtn";
+ import DeleteBtn from "./DeleteBtn";
 import {Button, ButtonToolbar, Panel, FormExample, ListGroup, ListGroupItem, FormGroup, FormControl, HelpBlock } from "react-bootstrap";
 import Display from "./DisplayRecipes";
 import axios from "axios";
@@ -20,9 +20,24 @@ class AddIngredients extends Component {
       console.log(response.data)
       Display.getRecipes();
     })
-    .catch(function(err){
-      console.log(err);
-    });
+    .catch(function (error) {
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+      // http.ClientRequest in node.js
+      console.log(error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.log('Error', error.message);
+    }
+    console.log(error.config);
+  });
   }
     componentDidMount() {
       localStorage.clear();
@@ -75,10 +90,10 @@ class AddIngredients extends Component {
 
       <ListGroup>
          {this.state.ingredients.map((ingredient,index) => (
-           <ListGroupItem>
+           <ListGroupItem id={index}>
              <strong>
               {ingredient}
-              <DeleteBtn id={index} onClick={this.deleteIngredient} />
+              <DeleteBtn onClick={this.deleteIngredient}/>
              </strong>
             </ListGroupItem>
           ))}
